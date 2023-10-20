@@ -28,9 +28,24 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @Validated
 public class LoansController {
+	
 	@Autowired
 	private ILoansService iLoansService;
 
+	@GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo(@Value("${build.version}") String buildVersion) {
+        return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(buildVersion);
+    }
+	
+	@GetMapping("/message")
+    public ResponseEntity<String> getMessage(@Value("${accounts.message}") String buildVersion) {
+        return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(buildVersion);
+    }
+	
 	@GetMapping("/get")
 	public String test() {
 		return "hello cards";

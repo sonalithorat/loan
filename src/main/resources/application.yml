@@ -1,6 +1,9 @@
 server:
   port: 8082
-  
+
+build:
+  version: "4.0"
+    
 spring:
   datasource:
     url: jdbc:h2:mem:dcbapp
@@ -18,7 +21,26 @@ spring:
     show-sql: true
 #this property is required to create table automatically using entities
     defer-datasource-initialization: true
+    
+    
+  profiles:
+    active: "prod"
 
+  application:
+    name: "loans"    
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+    cloud:
+     config:
+      enabled: true
+      uri: "//localhost:8071"
+      
+management:
+ endpoints:
+  web:
+   exposure:
+    include: "*"
+      
 logging:
   level:
     org:
