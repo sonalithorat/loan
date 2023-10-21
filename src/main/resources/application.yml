@@ -1,8 +1,5 @@
 server:
   port: 8082
-
-build:
-  version: "4.0"
     
 spring:
   datasource:
@@ -30,11 +27,13 @@ spring:
     name: "loans"    
   config:
     import: "optional:configserver:http://localhost:8071/"
-    cloud:
-     config:
-      enabled: true
-      uri: "//localhost:8071"
-      
+
+rabbitmq:
+ host: "localhost"
+ port: 5672
+ username: "guest"
+ password: "guest"
+       
 management:
  endpoints:
   web:

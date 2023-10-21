@@ -1,6 +1,8 @@
 package com.sonali.loan.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping(path = "/api", produces = { MediaType.APPLICATION_JSON_VALUE })
 @AllArgsConstructor
 @Validated
+@RefreshScope
 public class LoansController {
 	
 	@Autowired
