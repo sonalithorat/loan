@@ -46,9 +46,17 @@ management:
     include: "*"
     
   #eureka properties starts from here     
+ health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
  endpoint:
-  shutdown:
-   enabled: true
+    shutdown:
+      enabled: false
+    health:
+      probes:
+        enabled: true
  
  info:
   env:
@@ -56,7 +64,7 @@ management:
    
 endpoints:
  shutdown:
-  enabled: true
+  enabled: false
   
 info:
   app:
